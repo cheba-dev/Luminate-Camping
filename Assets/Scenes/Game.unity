@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 312637872}
   m_Layer: 0
   m_Name: Campfire
-  m_TagString: Untagged
+  m_TagString: Campfire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,6 +683,7 @@ GameObject:
   - component: {fileID: 736769681}
   - component: {fileID: 736769680}
   - component: {fileID: 736769679}
+  - component: {fileID: 736769683}
   m_Layer: 0
   m_Name: Stump
   m_TagString: Untagged
@@ -769,6 +770,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736769683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736769678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e007681a8d96fa4692a71390b3937bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 9955c204af8eff545a1c9d18d87e1ede, type: 2}
 --- !u!1 &1028484422
 GameObject:
   m_ObjectHideFlags: 0

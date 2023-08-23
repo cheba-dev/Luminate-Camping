@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc050d07f5d344b87a106e1f9c4428, type: 3}
   m_Name: Stump
   m_EditorClassIdentifier: 
-  addCharacterSpeed: 2
+  addCharacterSpeed: -2
   addFireTime: 10
