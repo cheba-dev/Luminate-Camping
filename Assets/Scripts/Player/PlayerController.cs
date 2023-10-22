@@ -4,6 +4,7 @@ using UnityEngine;
 using LuminateCamping.Scripts;
 using UnityEditor;
 using System;
+using Photon.Pun;
 
 namespace LuminateCamping.Player
 {
@@ -13,15 +14,30 @@ namespace LuminateCamping.Player
         private Transform _campfire;
         private Rigidbody _rigidbody;
         private PickedItem _pickedItem = null;
+        private PhotonView photonView;
 
         void Start()
         {
+            photonView = GetComponent<PhotonView>();
             _rigidbody = GetComponent<Rigidbody>();
             _campfire = GameObject.FindGameObjectWithTag("Campfire").transform;
+
+            if (photonView.IsMine)
+            {
+                this.gameObject.tag = "Player";
+            }
+            else
+            {
+                this.gameObject.tag = "Untagged";
+                this.gameObject.GetComponent<AudioListener>().enabled = false;
+            }
         }
 
         void FixedUpdate()
         {
+            if (!photonView.IsMine)
+                return;
+
             var moveHorizontal = Input.GetAxis("Horizontal");
             var moveVertical = Input.GetAxis("Vertical");
             Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);

@@ -6,7 +6,7 @@ namespace LuminateCamping.Player
 {
     public class CameraController : MonoBehaviour
     {
-        public Transform player;
+        public Transform player = null;
         public float moveSpeed;
         public Vector3 offset;
         public float followDistance;
@@ -15,16 +15,23 @@ namespace LuminateCamping.Player
 
         void Update()
         {
-            if (Vector3.Distance(transform.position, player.position) > teleportDistanceThreshold)
+            if (player == null)
             {
-                transform.position = player.position + offset + -transform.forward * followDistance;
+                player = GameObject.FindGameObjectWithTag("Player").transform;
             }
             else
             {
-                Vector3 pos = Vector3.Lerp(transform.position, player.position + offset + -transform.forward * followDistance, moveSpeed * Time.deltaTime);
-                transform.position = pos;
+                if (Vector3.Distance(transform.position, player.position) > teleportDistanceThreshold)
+                {
+                    transform.position = player.position + offset + -transform.forward * followDistance;
+                }
+                else
+                {
+                    Vector3 pos = Vector3.Lerp(transform.position, player.position + offset + -transform.forward * followDistance, moveSpeed * Time.deltaTime);
+                    transform.position = pos;
+                }
+                transform.rotation = rotation;
             }
-            transform.rotation = rotation;
         }
     }
 }
